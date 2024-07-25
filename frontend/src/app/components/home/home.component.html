@@ -36,12 +36,12 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                     <h5 class="card-title">Fecha y Hora de entrega: {{  (pedido2.fechaEntrega.timestamp + 86400) * 1000 | date:'dd/MM/yyyy' }} {{pedido2.hora.timestamp * 1000 | date: 'HH:mm'}} </h5>
-                    <p class="card-title"> Nombre de Cliente: {{pedido2.clientecliente.nombre}} {{pedido2.clientecliente.apellidos}}</p>
+                    <p class="card-title"> Nombre de Cliente: {{pedido2.cliente.nombre}} {{pedido2.cliente.apellidos}}</p>
                   </div>
                   <div class="card-body">
                     <h5 class="card-title"> para: {{pedido2.para}}</h5>
                     <p class="card-text"> de: {{pedido2.de}}</p>
-                    <p class="card-text"> motivo: {{pedido2.motivomotivo.nombre}}</p>
+                    <p class="card-text"> motivo: {{pedido2.motivo.nombre}}</p>
                     <p class="card-text"> Direccion de entrega: {{pedido2.direccionEntrega}}</p>
                     <p class="card-text"> Valor del ramo: {{pedido2.valor}}</p>
                     <p class="card-text"> Valor del domicilio: {{pedido2.valorDomicilio}}</p>

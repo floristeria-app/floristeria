@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Cliente } from '../../model/Cliente';
+import { Cliente } from '../../model/cliente';
 import { ClienteService } from '../../services/cliente.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class ClienteComponent implements OnInit {
         private _router: Router
         ) { }
 
-  	
+
   	ngOnInit() {
       this.cliente = new Cliente(1,"","","","","","");
       this.cliente2 = new Cliente(1,"","","","","","");
@@ -45,9 +45,9 @@ export class ClienteComponent implements OnInit {
 
       this._route.params.subscribe(
         params =>{
-        
+
         //let id = + params["id"];
-        
+
         this._ClienteService.getCliente(id).subscribe(
           response => {
             this.cliente2 = response['data'];
@@ -75,12 +75,13 @@ export class ClienteComponent implements OnInit {
         let cliente = this.cliente;
         this._ClienteService.create(this.cliente).subscribe(
         response =>{
+          console.log(response.status);
           this.status = response['status'];
           console.log(cliente);
-          if (this.status != 'success') {
+          if (this.status != '201') {
             this.status = "error";
           }else{
-            this.cliente = response['msg'];
+            this.cliente = response.body;
             console.log(this.cliente);
           }
         },
@@ -92,7 +93,7 @@ export class ClienteComponent implements OnInit {
           }
         }
         );
-      window.location.href = "/cliente";
+      //window.location.href = "/cliente";
       console.log("cliente creado");
     }
 
@@ -138,7 +139,7 @@ export class ClienteComponent implements OnInit {
           }
         );
     });
-    
+
   }
 
   editarCliente(id, value){

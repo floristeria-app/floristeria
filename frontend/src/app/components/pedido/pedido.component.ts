@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Cliente } from '../../model/Cliente';
+import { Cliente } from '../../model/cliente';
 import { Pedido } from '../../model/pedido';
 import { Dedicatoria } from '../../model/dedicatoria';
 import { Motivo } from '../../model/motivo';
 import { ClienteService } from '../../services/cliente.service';
 import { PedidoService } from '../../services/pedido.service';
 import { MotivoService } from '../../services/motivo.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'pedido',
@@ -22,6 +23,7 @@ export class PedidoComponent implements OnInit {
 	public errorMessage;
   public pedido;
   public date : Date = new Date();
+  public date2: Date = new Date();
   public motivos;
 
   	constructor(private _ClienteService : ClienteService,
@@ -32,15 +34,16 @@ export class PedidoComponent implements OnInit {
 
   	ngOnInit() {
   		this.cliente = new Cliente(1,"","","","","","");
-      console.log(this.date);
-      this.pedido = new Pedido(1,"","","",false,0,0,this.date, this.date,"","","","","",false,this.date,"");
+
+      console.log(this.date2);
+      this.pedido = new Pedido(1,"","","",false,0,0,this.date, this.date,moment(this.date2).format("YYYY-MM-DD"),"","","","","",false,this.date,"");
   		this.getAllClientes();
       this.getAllMotivos();
   	}
 
   	 getAllClientes(){
     this._route.params.subscribe(params=>{
-      
+
       this._ClienteService.listarClientespedido().subscribe(
           response =>{
             this.status = response['status'];
@@ -48,7 +51,7 @@ export class PedidoComponent implements OnInit {
               this.status = "error";
             }else{
               this.clientes = response['data'];
-               console.log(this.clientes);
+              console.log(this.clientes);
             }
           },
           error =>{
@@ -60,37 +63,37 @@ export class PedidoComponent implements OnInit {
           }
         );
     });
-    
+
   }
 
   newPedido(){
         let pedido = this.pedido;
         this._PedidoService.create(this.pedido).subscribe(
         response =>{
-          this.status = response['status'];
+          this.status = response.status;
           console.log(pedido);
-          if (this.status != 'success') {
+          if (this.status != '201') {
             this.status = "error";
           }else{
-            this.cliente = response['msg'];
-            console.log(this.cliente);
+            this.pedido = response.body;
+            console.log(this.pedido);
           }
         },
         error =>{
           this.errorMessage = <any>error;
           if (this.errorMessage != null) {
-            console.log(this.errorMessage);
+            console.log(this.errorMessage.message);
             alert("Error en la peticion");
           }
         }
         );
       window.location.href = "/";
-      console.log("cliente creado");
+      console.log("pedido creado");
     }
 
     getAllMotivos(){
     this._route.params.subscribe(params=>{
-      
+
       this._MotivoService.listarMotivos().subscribe(
           response =>{
             this.status = response['status'];
@@ -110,7 +113,7 @@ export class PedidoComponent implements OnInit {
           }
         );
     });
-    
+
   }
 
 }

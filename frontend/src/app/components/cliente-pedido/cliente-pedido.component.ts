@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Cliente } from '../../model/Cliente';
+import { Cliente } from '../../model/cliente';
 import { Pedido } from '../../model/pedido';
 import { ClienteService } from '../../services/cliente.service';
 import { PedidoService } from '../../services/pedido.service';
@@ -39,8 +39,8 @@ export class ClientePedidoComponent implements OnInit {
   	ngOnInit() {
   		this.cliente = new Cliente(1,"","","","","","");
   		this.cliente = this.getCliente();
-  		this.pedido = new Pedido(1,"","","",false,1,1,this.date, this.date,"","","","",this.idcliente,false,this.date,"");
-      this.pedido2 = new Pedido(1,"","","",false,1,1,this.date, this.date,"","","","",this.idcliente,false,this.date,"");
+  		this.pedido = new Pedido(1,"","","",false,1,1,this.date, this.date,this.date,"","","","",this.idcliente,false,this.date,"");
+      this.pedido2 = new Pedido(1,"","","",false,1,1,this.date, this.date,this.date,"","","","",this.idcliente,false,this.date,"");
   		this.listarPedidosCliente();
       this.getAllMotivos();
   		console.log(this.idcliente);
@@ -102,9 +102,9 @@ export class ClientePedidoComponent implements OnInit {
   	getCliente(){
       this._route.params.subscribe(
         params =>{
-        
+
         this.idcliente = + params["id"];
-        
+
         this._ClienteService.getCliente(this.idcliente).subscribe(
           response => {
             this.cliente = response['data'];
@@ -127,15 +127,15 @@ export class ClientePedidoComponent implements OnInit {
       );
     }
 
-    
+
     getPedido(idpedido, value){
       this.hrcliente = value;
 
       this._route.params.subscribe(
         params =>{
-        
+
         //let id = + params["id"];
-        
+
         this._PedidoService.Pedido(idpedido).subscribe(
           response => {
             this.pedido2 = response['data'];
@@ -250,7 +250,7 @@ export class ClientePedidoComponent implements OnInit {
 
   getAllMotivos(){
     this._route.params.subscribe(params=>{
-      
+
       this._MotivoService.listarMotivos().subscribe(
           response =>{
             this.status = response['status'];
@@ -270,6 +270,6 @@ export class ClientePedidoComponent implements OnInit {
           }
         );
     });
-    
+
   }
 }

@@ -23,13 +23,13 @@ export class SearchPedidoComponent implements OnInit {
     public date : Date = new Date();
     public idpedido;
     public idmotivo;
-  	
+
   	constructor(private _PedidoService : PedidoService,
         private _route: ActivatedRoute,
         private _router: Router) { }
 
   	ngOnInit() {
-      this.pedido2 = new Pedido(1,"","","",false,1,1,this.date, this.date,"","","","","",false,this.date,"");
+      this.pedido2 = new Pedido(1,"","","",false,1,1,this.date, this.date,this.date,"","","","","",false,this.date,"");
   		this.search();
   	}
 

@@ -5,7 +5,7 @@
 		<div class="form-row">
 			<div class="form-group">
     			<label for="exampleFormControlSelect1">Cliente:</label>
-    			<select class="form-control show-tick" data-live-search="true" id="exampleFormControlSelect1" id="clientecliente" #clientecliente="ngModel" name="clientecliente" [(ngModel)]="pedido.clientecliente" ngControl="name">
+    			<select class="form-control show-tick" data-live-search="true" id="exampleFormControlSelect1" id="cliente" #cliente="ngModel" name="cliente" [(ngModel)]="pedido.cliente" ngControl="name">
       				<option *ngFor="let cliente of clientes" id="cliente.idcliente" name="cliente.idcliente" value="{{cliente.idcliente}}">
       					{{cliente.nombre}} {{cliente.apellidos}}
       				</option>
@@ -24,13 +24,13 @@
 	  	</div>
 		<div class="form-group col-md-6">
     			<label for="exampleFormControlSelect1">Motivo:</label>
-    			<select class="form-control show-tick" data-live-search="true" id="exampleFormControlSelect1" id="motivomotivo" #motivomotivo="ngModel" name="motivomotivo" [(ngModel)]="pedido.motivomotivo" ngControl="name">
+    			<select class="form-control show-tick" data-live-search="true" id="exampleFormControlSelect1" id="motivo" #motivo="ngModel" name="motivo" [(ngModel)]="pedido.motivo" ngControl="name">
       				<option *ngFor="let motivo of motivos" id="motivo.idmotivo" name="motivo.idmotivo" value="{{motivo.idmotivo}}">
       					{{motivo.nombre}}
       				</option>
     			</select>
   		</div>
-		
+
 	  	<div class="form-group col-md-6">
 	    	<label for="direccion-entrega">Direccion de entrega: </label>
 	    	<input type="text" class="form-control" id="direccionEntrega" name="direccionEntrega" #direccionEntrega="ngModel" [(ngModel)]="pedido.direccionEntrega" ngControl="name" placeholder="¿Donde desea entregar el pedido?">

@@ -29,7 +29,7 @@ export class PorpagarComponent implements OnInit {
         private _router: Router) { }
 
   	ngOnInit() {
-      this.pedido2 = new Pedido(1,"","","",false,1,1,this.date, this.date,"","","","","",false,this.date,"");
+      this.pedido2 = new Pedido(1,"","","",false,1,1,this.date, this.date,this.date,"","","","","",false,this.date,"");
   		this.listPedidoPorPagar();
   	}
 
@@ -101,7 +101,7 @@ export class PorpagarComponent implements OnInit {
           }
         );
     });
-    
+
   }
 
   porentregar(){

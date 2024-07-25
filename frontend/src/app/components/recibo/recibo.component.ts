@@ -27,19 +27,19 @@ export class ReciboComponent implements OnInit {
          }
 
   	ngOnInit() {
-  		this.pedido2 = new Pedido(1,"","","",false,1,1,this.date, this.date,"","","","",this.idcliente,false,this.date,"");
+  		this.pedido2 = new Pedido(1,"","","",false,1,1,this.date, this.date,this.date,"","","","",this.idcliente,false,this.date,"");
   		this.getPedido();
   		console.log(this.pedido);
   	}
 
-  	
+
 
   	getPedido(){
     this._route.params.subscribe(
         params =>{
-        
+
         let id = + params["id"];
-        
+
         this._PedidoService.Pedido(id).subscribe(
           response => {
             this.pedido2 = response['data'];

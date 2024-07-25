@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Cliente } from '../../model/Cliente';
+import { Cliente } from '../../model/cliente';
 import { ClienteService } from '../../services/cliente.service';
 
 @Component({
@@ -99,9 +99,9 @@ export class SearchClienteComponent implements OnInit {
 
       this._route.params.subscribe(
         params =>{
-        
+
         //let id = + params["id"];
-        
+
         this._ClienteService.getCliente(id).subscribe(
           response => {
             this.cliente2 = response['data'];

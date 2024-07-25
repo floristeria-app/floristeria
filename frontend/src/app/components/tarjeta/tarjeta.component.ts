@@ -41,7 +41,7 @@ export class TarjetaComponent implements OnInit {
         }
 
   	ngOnInit() {
-  		this.pedido2 = new Pedido(1,"","","",false,1,1,this.date, this.date,"","","","",this.idcliente,false,this.date,"");
+  		this.pedido2 = new Pedido(1,"","","",false,1,1,this.date, this.date,this.date,"","","","",this.idcliente,false,this.date,"");
   		this.getPedido();
   		console.log(this.pedido);
   		this.listarImagenes();
