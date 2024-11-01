@@ -19,8 +19,8 @@ export class ImagenTarjetaService{
 	makefilerequest( imagentarjeta, files: Array<File> ){
 		return new Promise((resolve, reject) =>{
 			let json = JSON.stringify(imagentarjeta);
-			var formData:any = new FormData();
-			var xhr = new XMLHttpRequest();
+			let formData:any = new FormData();
+			let xhr = new XMLHttpRequest();
 			for (var i = 0 ; i < files.length; i++) {
 				formData.append("image",files[i],files[i].name);
 			}
