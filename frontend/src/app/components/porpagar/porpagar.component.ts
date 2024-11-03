@@ -75,7 +75,7 @@ export class PorpagarComponent implements OnInit {
               this.pedidos = response['data'];
                console.log(this.pedidos);
               this.pages = [];
-              for (var i = 0; i < response['total_pages']; ++i) {
+              for (let i = 0; i < response['total_pages']; ++i) {
                 this.pages.push(i);
               }
 
