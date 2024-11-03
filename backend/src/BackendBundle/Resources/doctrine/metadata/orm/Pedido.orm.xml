@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Pedido" table="pedido">
+    <indexes>
+      <index name="fk_Pedido_Cliente1_idx" columns="Cliente_num_cliente"/>
+    </indexes>
+    <id name="idpedido" type="integer" column="idPedido">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="para" type="string" column="para" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="de" type="string" column="de" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="direcccionEntrega" type="string" column="direcccion_entrega" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pago" type="boolean" column="pago" nullable="true"/>
+    <field name="valor" type="decimal" column="valor" precision="6" scale="0" nullable="true"/>
+    <field name="valorDomicilio" type="decimal" column="valor_domicilio" precision="6" scale="0" nullable="true"/>
+    <field name="fechaEntrega" type="date" column="fecha_entrega" nullable="true"/>
+    <field name="fechaCobro" type="date" column="fecha_cobro" nullable="true"/>
+    <field name="fechaGeneracion" type="date" column="fecha_generacion" nullable="true"/>
+    <field name="motivo" type="string" column="motivo" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="direccionCobro" type="string" column="direccion_cobro" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="telefonoEntrega" type="string" column="telefono_entrega" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="telefonoCobro" type="string" column="telefono_cobro" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dedicatoria" type="text" column="dedicatoria" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="clienteNumCliente" type="string" column="Cliente_num_cliente" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,52 @@
+BackendBundle\Entity\Cliente:
+    type: entity
+    table: cliente
+    id:
+        idcliente:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idCliente
+            generator:
+                strategy: IDENTITY
+    fields:
+        numCliente:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: num_cliente
+        nombre:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        apellidos:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        telefono:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        celular:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

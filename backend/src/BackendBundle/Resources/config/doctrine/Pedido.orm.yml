@@ -1,0 +1,121 @@
+BackendBundle\Entity\Pedido:
+    type: entity
+    table: pedido
+    indexes:
+        fk_Pedido_Cliente_idx:
+            columns:
+                - Cliente_idCliente
+        fk_pedido_motivo1_idx:
+            columns:
+                - motivo_idmotivo
+    id:
+        idpedido:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idPedido
+            generator:
+                strategy: IDENTITY
+    fields:
+        para:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        de:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        direccionEntrega:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: direccion_entrega
+        pago:
+            type: boolean
+            nullable: true
+        valor:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 0
+        valorDomicilio:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 0
+            column: valor_domicilio
+        fechaEntrega:
+            type: date
+            nullable: true
+            column: fecha_entrega
+        fechaCobro:
+            type: date
+            nullable: true
+            column: fecha_cobro
+        fechaGeneracion:
+            type: date
+            nullable: true
+            column: fecha_generacion
+        direccionCobro:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: direccion_cobro
+        telefonoEntrega:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: telefono_entrega
+        telefonoCobro:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: telefono_cobro
+        entregado:
+            type: boolean
+            nullable: true
+        hora:
+            type: time
+            nullable: true
+        comentario:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    manyToOne:
+        clientecliente:
+            targetEntity: Cliente
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Cliente_idCliente:
+                    referencedColumnName: idCliente
+            orphanRemoval: false
+        motivomotivo:
+            targetEntity: Motivo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                motivo_idmotivo:
+                    referencedColumnName: idmotivo
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
