@@ -54,7 +54,7 @@ export class SearchClienteComponent implements OnInit {
               		this.clientes = response['data'];
                		console.log(this.clientes);
               		this.pages = [];
-              		for (var i = 0; i < response['total_pages']; ++i) {
+              		for (let i = 0; i < response['total_pages']; ++i) {
                 		this.pages.push(i);
               		}
 
