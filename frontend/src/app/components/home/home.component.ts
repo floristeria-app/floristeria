@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
               this.pedidos = response['data'];
                console.log(this.pedidos);
               this.pages = [];
-              for (let i = 0; i < response['total_pages']; ++i) {
+              for (var i = 0; i < response['total_pages']; ++i) {
                 this.pages.push(i);
               }
 
