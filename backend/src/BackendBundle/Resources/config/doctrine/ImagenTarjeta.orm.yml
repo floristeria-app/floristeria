@@ -1,0 +1,48 @@
+BackendBundle\Entity\ImagenTarjeta:
+    type: entity
+    table: imagen_tarjeta
+    indexes:
+        fk_imagen_tarjeta_motivo1_idx:
+            columns:
+                - motivo_idmotivo
+    id:
+        idimagenTarjeta:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idimagen_tarjeta
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        url:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        descripcion:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    manyToOne:
+        motivomotivo:
+            targetEntity: Motivo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                motivo_idmotivo:
+                    referencedColumnName: idmotivo
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

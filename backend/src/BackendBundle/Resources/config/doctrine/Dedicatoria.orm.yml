@@ -1,0 +1,41 @@
+BackendBundle\Entity\Dedicatoria:
+    type: entity
+    table: dedicatoria
+    indexes:
+        fk_dedicatoria_motivo1_idx:
+            columns:
+                - motivo_idmotivo
+    id:
+        iddedicatoria:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        dedicatoria:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    manyToOne:
+        motivomotivo:
+            targetEntity: Motivo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                motivo_idmotivo:
+                    referencedColumnName: idmotivo
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
