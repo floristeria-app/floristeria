@@ -113,7 +113,7 @@ export class ClienteComponent implements OnInit {
               this.clientes = response['data'];
                console.log(this.clientes);
               this.pages = [];
-              for (let i = 0; i < response['total_pages']; ++i) {
+              for (var i = 0; i < response['total_pages']; ++i) {
                 this.pages.push(i);
               }
 
